@@ -1,8 +1,9 @@
 {
   "presets": [
+      ["flow"],
       ["env", {
           "targets": {
-              "node": "10.5.0"
+              "node": "8.11.3"
           }
       }]
   ],
