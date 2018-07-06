@@ -60,6 +60,6 @@ app.use(bodyParser())
 app.use(router.routes()).use(router.allowedMethods())
 
 // 加载静态资源
-app.use(file(path.resolve(__dirname, '../static'), { extensions: ['html'] }));
+app.use(file(path.resolve(__dirname, '../public'), { extensions: ['html'] }));
 
 module.exports = app
