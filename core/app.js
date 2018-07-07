@@ -42,9 +42,6 @@ import './DAO'
 
 const app = new Koa()
 
-const n: number = 1
-
-console.log(n)
 
 // 跨域配置
 app.use(cors())

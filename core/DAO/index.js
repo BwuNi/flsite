@@ -15,8 +15,4 @@ client.query('SELECT "id", "name" FROM "test";', (err, res) => {
     client.end()
 })
 
-const map: {
-    [key: string]: any => any
-} = {}
-
 export default map

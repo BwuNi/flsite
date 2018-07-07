@@ -1,33 +1,33 @@
 const
-    exec = require('child_process').exec,
+    // exec = require('child_process').exec,
     spawn = require('child_process').spawn,
     path = require('path'),
     chalk = require('chalk') // 控制台 text 颜色
 
 
 const
-    proj_path = path.resolve(__dirname, '../'),
-    babel_watch = spawn(
-        'cmd.exe', ['/s', '/c', `"cd ${proj_path} && npm run build:watch"`], { cwd: null, env: null, windowsVerbatimArguments: true }
+    projPath = path.resolve(__dirname, '../'),
+    babelWatch = spawn(
+        'cmd.exe', ['/s', '/c', `"cd ${projPath} && npm run build:watch"`], { cwd: null, env: null, windowsVerbatimArguments: true }
     )
 
-babel_watch.stdout.on('data', function(data: string) {
+babelWatch.stdout.on('data', function(data) {
     console.log(chalk.yellow(`service: ${data.toString()}`))
 });
 
-babel_watch.stderr.on('data', (data: string) => {
+babelWatch.stderr.on('data', (data) => {
     console.log(chalk.yellow(`service: ${data.toString()}`));
 });
 
 const
-    node_watch = spawn(
-        'cmd.exe', ['/s', '/c', `"cd ${proj_path} && npm run start:watch`], { cwd: null, env: null, windowsVerbatimArguments: true }
+    nodeWatch = spawn(
+        'cmd.exe', ['/s', '/c', `"cd ${projPath} && npm run start:watch`], { cwd: null, env: null, windowsVerbatimArguments: true }
     )
 
-node_watch.stdout.on('data', function(data: string) {
-    console.log(chalk.blue(`client: ${buffer.toString()}`))
+nodeWatch.stdout.on('data', function(data) {
+    console.log(chalk.blue(`client: ${data.toString()}`))
 });
 
-node_watch.stderr.on('data', (data: string) => {
+nodeWatch.stderr.on('data', (data) => {
     console.log(chalk.blue(`client: ${data.toString()}`));
 });

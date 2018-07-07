@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <s-login></s-login>
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
@@ -20,8 +21,13 @@
 </template>
 
 <script>
+import Login from './Login'
+
 export default {
   name: 'app',
+  components:{
+    's-login':Login
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

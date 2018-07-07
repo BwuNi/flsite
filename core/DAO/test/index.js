@@ -1,3 +1,5 @@
-export default function (client) {
+export default function (
+    // client
+) {
     
 }

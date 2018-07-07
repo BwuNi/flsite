@@ -1,7 +1,7 @@
 import Router from 'koa-router'
 
-export default function(router: Router) {
-    router.get('/GetMyMenuTops', async (ctx): void => {
+export default function(router) {
+    router.get('/GetMyMenuTops', async (ctx)=> {
         ctx.body = JSON.stringify(
             msg
         )

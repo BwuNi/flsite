@@ -4,19 +4,17 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "babel core -d dist",
-    "build:watch": "babel core -d dist -w",
+    "build": "node ./script/build",
+    "build:watch": "node ./script/build --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && node ./server.js",
     "start:watch": "npm run build && node-dev ./server.js",
     "dev": "node ./script/dev.js",
-    "package": "docker build -t flsite .",
-    "flow": "flow check"
+    "package": "docker build -t flsite ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-preset-env": "^1.7.0",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.1",
     "koa-convert": "^1.2.0",
@@ -27,12 +25,5 @@
     "pg": "^7.4.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.5",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-preset-flow": "^6.23.0",
-    "eslint": "^5.0.1",
-    "eslint-plugin-flowtype": "^2.49.3",
-    "nodemon": "^1.17.5"
   }
 }
