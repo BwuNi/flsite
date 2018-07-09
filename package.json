@@ -3,6 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.5",
+    "nodemon": "^1.17.5",
+    "pg": "^7.4.3"
+  },
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  },
   "scripts": {
     "build": "node ./script/build",
     "build:watch": "node ./script/build --watch",
@@ -12,18 +26,14 @@
     "dev": "node ./script/dev.js",
     "package": "docker build -t flsite ."
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BwuNi/flsite.git"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "koa": "^2.5.1",
-    "koa-bodyparser": "^4.2.1",
-    "koa-convert": "^1.2.0",
-    "koa-logger": "^3.2.0",
-    "koa-router": "^7.4.0",
-    "koa-static": "^5.0.0",
-    "koa2-cors": "^2.0.5",
-    "pg": "^7.4.3"
+  "bugs": {
+    "url": "https://github.com/BwuNi/flsite/issues"
   },
-  "devDependencies": {
-  }
+  "homepage": "https://github.com/BwuNi/flsite#readme"
 }
