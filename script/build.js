@@ -7,7 +7,7 @@ let isWatch = ''
 
 process.argv.forEach(function(val, index, array) {
     console.log(val)
-    if(val === '--watch' || val === '-w') isWatch ='--watch'
+    if (val === '--watch' || val === '-w') isWatch = '--watch'
 });
 
 
@@ -19,11 +19,30 @@ const
     )
 
 
-    console.log(`"cd ${projPath} && tsc ${isWatch}"`)
+console.log(`"cd ${projPath} && tsc ${isWatch}"`)
+
 tscWatch.stdout.on('data', function(data) {
-    console.log(chalk.yellow(`tsc: ${data.toString()}`))
+    console.log('tsc: ' + chalk.green(`tsc: ${data.toString()}`))
 });
 
 tscWatch.stderr.on('data', (data) => {
-    console.log(chalk.red(`tsc: ${data.toString()}`));
+    console.log('tsc: ' + chalk.red(`tsc: ${data.toString()}`));
+});
+
+
+const
+    pubPath = path.resolve(__dirname, '../public'),
+    pubWatch = spawn(
+        'cmd.exe', ['/s', '/c', `"cd ${pubPath} && npm run build"`], { cwd: null, env: null, windowsVerbatimArguments: true }
+    )
+
+
+console.log(`"cd ${pubPath} && npm run build"`)
+
+pubWatch.stdout.on('data', function(data) {
+    console.log('public: ' + chalk.blue(`tsc: ${data.toString()}`))
+});
+
+pubWatch.stderr.on('data', (data) => {
+    console.log('public: ' + chalk.red(`tsc: ${data.toString()}`));
 });
