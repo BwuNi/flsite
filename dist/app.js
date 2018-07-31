@@ -11,7 +11,6 @@ const koa_logger_1 = __importDefault(require("koa-logger"));
 const koa_convert_1 = __importDefault(require("koa-convert"));
 const koa_static_1 = __importDefault(require("koa-static"));
 const router_1 = __importDefault(require("./router"));
-require("./DAO");
 const app = new koa_1.default();
 app.use(koa2_cors_1.default());
 app.use(koa_convert_1.default(koa_logger_1.default()));

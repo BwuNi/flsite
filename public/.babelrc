@@ -1,6 +1,21 @@
 {
-  "presets": [
-    ["env", { "modules": false }],
-    "stage-3"
-  ]
+    "presets": [
+        ["env", { "modules": false }],
+        "babel-preset-power-assert"
+    ],
+    "plugins": [
+        "syntax-dynamic-import",
+        "transform-vue-jsx",
+        "istanbul",
+        ["transform-runtime", {
+            "helpers": false,
+            "polyfill": false,
+            "regenerator": true,
+            "moduleName": "babel-runtime"
+        }],
+        ["component", [{
+            "libraryName": "element-ui",
+            "styleLibraryName": "~src/less/theme"
+        }]]
+    ]
 }

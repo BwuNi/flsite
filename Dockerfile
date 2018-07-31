@@ -8,9 +8,9 @@ WORKDIR /home/Service
 COPY . /home/Service
 RUN npm install
 
-EXPOSE 80
+EXPOSE 8080
 CMD [ "npm", "start" ]
 
 # docker stop $(docker ps -q) & docker rm $(docker ps -aq)
 # docker build -t flsite .
-# docker run -d -p 3000:3000 flsite
+# docker run -d -p 8080:8080 flsite

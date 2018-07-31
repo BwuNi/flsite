@@ -38,7 +38,13 @@ import file from 'koa-static' // 处理静态资源
 
 import router from './router'
 
-import './DAO'
+import {pdfzj} from './BLL'
+
+import { test } from './DAO'
+
+// pdfzj.getMagzine()
+// pdfzj.getBooks()
+// pdfzj.getDownload()
 
 const app = new Koa()
 
