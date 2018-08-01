@@ -3,13 +3,13 @@ import send from './send'
 
 export default class Ajax {
 
-    constructor(config) {
-        if (config) this.config = config
-        else this.config = {}
+    constructor(option) {
+        if (option) this.option = option
+        else this.option = {}
     }
 
     send(){
-        return send(this.config)
+        return send(this.option)
     }
 
 
@@ -26,47 +26,52 @@ export default class Ajax {
 
     // 配置项
 
+    url(str){
+        this.option.url = str;
+        return this
+    }
+
     type(str) {
-        this.config.type = str
+        this.option.type = str
         return this
     }
 
     path(str) {
-        this.config.path = str
+        this.option.path = str
         return this
     }
 
 
     isAsync(str) {
-        this.config.async = str
+        this.option.async = str
         return this
     }
 
 
     data(str) {
-        this.config.data = str
+        this.option.data = str
         return this
     }
 
 
     system(str) {
-        this.config.system = str
+        this.option.system = str
         return this
     }
 
 
     encrypt(str) {
-        this.config.encrypt = str
+        this.option.encrypt = str
         return this
     }
 
     contentType(str) {
-        this.config.contentType = str
+        this.option.contentType = str
         return this
     }
 
     dataType(str) {
-        this.config.dataType = str
+        this.option.dataType = str
         return this
     }
 

@@ -78,12 +78,14 @@ function init_check() {
 
 	Ajax()
 		.data(null)
-		.get(`GetValidateCode/{"data":"${vcode_id}"}`)
+		.url(`http://127.0.0.1:8081/WCKJAPI_MD/GetValidateCode/%7B%22data%22:%22${vcode_id}%22%7D`)
+		.get()
 		.then(({ data }) => {
 			_this.img_src = data
 		})
 		.catch(() => {
-			_this.img_src = `http://127.0.0.1:8081/WCKJAPI_MD/GetValidateCode/{"data":"${vcode_id}"}`
+			// _this.img_src = `http://127.0.0.1:8081/WCKJAPI_MD/GetValidateCode/{"data":"${vcode_id}"}`
+			_this.img_src = `http://127.0.0.1:1102/WCKJAPI_MD/GetValidateCode/` + encodeURIComponent(`{"data":"${vcode_id}"}`)
 		})
 }
 

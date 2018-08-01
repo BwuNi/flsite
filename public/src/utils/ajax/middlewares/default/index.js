@@ -45,23 +45,23 @@ const def = {
     }
 }
 
-export default async function(config, then, err) {
+export default async function(option, then, err) {
 
-    let _config = Object.assign({},def.config ,config )
+    let _option = Object.assign({},def.config ,option )
 
-    if (_config.type === 'POST' || _config.type === 'GET' ||_config.type === 'get'||_config.type === 'post')
-        _config = Object.assign({}, _config, def[_config.type])
+    if (_option.type === 'POST' || _option.type === 'GET' ||_option.type === 'get'||_option.type === 'post')
+        _option = Object.assign({}, _option, def[_option.type])
     else
         return err('Method 输入错误')
 
-    if (!_config.url) {
-        if (_config.path && _config.system)
-            _config.url = origin['mock'] + system[_config.system] + _config.path
+    if (!_option.url) {
+        if (_option.path && _option.system)
+            _option.url = origin['mock'] + system[_option.system] + _option.path
         else
             return err('URL 为空')
     }
 
-    const result = await then(_config)
+    const result = await then(_option)
 
     console.log(result)
     return result
