@@ -32,7 +32,7 @@
     "build": "node ./script/build",
     "build:watch": "node ./script/build --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd ./public && npm run dist && cd ../ && node ./server.js",
+    "start": "cd ./public && npm install && npm run dist && cd ../ && node ./server.js",
     "start:watch": "npm run build && node-dev ./server.js",
     "dev": "node ./script/dev.js",
     "package": "docker build -t flsite ."
