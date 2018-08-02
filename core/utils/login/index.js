@@ -1,6 +1,5 @@
 import online from './online'
 
-
 export default{
     checkUser(id) {
         return online.check(id)
