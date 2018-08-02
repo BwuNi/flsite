@@ -78,8 +78,7 @@ function init_check() {
 
 	Ajax()
 		.data(null)
-		.url(`http://127.0.0.1:8081/WCKJAPI_MD/GetValidateCode/%7B%22data%22:%22${vcode_id}%22%7D`)
-		.get()
+		.get(`GetValidateCode/%7B%22data%22:%22${vcode_id}%22%7D`)
 		.then(({ data }) => {
 			_this.img_src = data
 		})

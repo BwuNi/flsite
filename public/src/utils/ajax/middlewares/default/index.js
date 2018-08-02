@@ -11,7 +11,7 @@ const system = {
 const origin = {
     prod: 'http://139.129.237.60:1102/',
     dev: 'http://127.0.0.1:1102/',
-    mock: 'http://127.0.0.1:8081/'
+    mock: 'http://127.0.0.1:8080/api/'
 }
 
 const def = {

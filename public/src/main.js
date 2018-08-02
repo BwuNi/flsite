@@ -5,7 +5,6 @@ import Vue from 'vue'
 import App from './App'
 import Pages from './router/index'
 import store from './store'
-import ajax from './utils/ajax0'
 
 //import Element from 'element-ui'
 import Globel_Comp from '@/components/common/globel/globel'
@@ -178,6 +177,3 @@ new Vue({
 })
 
 
-
-
-window.ajax = ajax

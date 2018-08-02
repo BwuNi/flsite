@@ -1,4 +1,4 @@
-import login from '../../../utils/login'
+import login from '../../../../utils/login'
 
 export default function(router) {
     router.post('/Login', async (ctx) => {

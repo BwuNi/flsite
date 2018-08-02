@@ -11,15 +11,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const login_1 = __importDefault(require("../../../../utils/login"));
-function default_1(router) {
-    router.post('/Login', (ctx) => __awaiter(this, void 0, void 0, function* () {
-        let data = ctx.request.body, id = login_1.default.login(data.LOGIN);
-        ctx.body = JSON.stringify({
-            success: true,
-            data: id
-        });
-    }));
-}
-exports.default = default_1;
+const getKey_1 = __importDefault(require("./getKey"));
+const jsdecrypt_1 = __importDefault(require("jsdecrypt"));
+module.exports = function decrypt(ctx, next) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (ctx.request &&
+            ctx.request.body &&
+            typeof ctx.request.body === 'object' &&
+            ctx.request.body.encrypt &&
+            ctx.request.body.data) {
+            ctx.request.body = JSON.parse(jsdecrypt_1.default.dec(yield getKey_1.default(), ctx.request.body.data));
+            yield next();
+        }
+        else {
+            yield next();
+        }
+    });
+};
 //# sourceMappingURL=index.js.map

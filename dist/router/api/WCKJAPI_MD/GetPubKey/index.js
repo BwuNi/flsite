@@ -14,7 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const createKey_1 = __importDefault(require("./createKey"));
 function default_1(router) {
     router.get('/GetPubKey', (ctx) => __awaiter(this, void 0, void 0, function* () {
-        key = yield createKey_1.default();
+        const key = yield createKey_1.default();
         ctx.body = JSON.stringify({
             success: true,
             data: key

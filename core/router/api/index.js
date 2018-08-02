@@ -1,9 +1,9 @@
 import Router from 'koa-router'
-import getMyMenuTops from './GetMyMenuTops'
+import MD from './WCKJAPI_MD'
 
 let api = new Router()
 
-getMyMenuTops(api)
+api.use('/WCKJAPI_MD', MD.routes(), MD.allowedMethods())
 
 export default api
 

@@ -38,7 +38,11 @@ import file from 'koa-static' // 处理静态资源
 
 import router from './router'
 
-import {pdfzj} from './BLL'
+import convertParam from './middleware/convertParam'
+import dataParser from './middleware/dataParser'
+import decrypt from './middleware/decrypt'
+
+import { pdfzj } from './BLL'
 
 import { test } from './DAO'
 
@@ -58,6 +62,14 @@ app.use(convert(koaLogger()))
 // 配置ctx.body解析中间件
 app.use(bodyParser())
 
+// 数据解析
+app.use(convertParam)
+
+// 数据解密
+app.use(decrypt)
+
+// 数据解密
+app.use(dataParser)
 
 // 加载路由中间件
 app.use(router.routes()).use(router.allowedMethods())

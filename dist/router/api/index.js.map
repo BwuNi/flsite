@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../core/router/api/index.js"],"names":[],"mappings":";;;;;AAAA,4DAA+B;AAC/B,oEAA2C;AAE3C,IAAI,GAAG,GAAG,IAAI,oBAAM,EAAE,CAAA;AAEtB,uBAAa,CAAC,GAAG,CAAC,CAAA;AAElB,kBAAe,GAAG,CAAA"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../core/router/api/index.js"],"names":[],"mappings":";;;;;AAAA,4DAA+B;AAC/B,8DAA6B;AAE7B,IAAI,GAAG,GAAG,IAAI,oBAAM,EAAE,CAAA;AAEtB,GAAG,CAAC,GAAG,CAAC,aAAa,EAAE,oBAAE,CAAC,MAAM,EAAE,EAAE,oBAAE,CAAC,cAAc,EAAE,CAAC,CAAA;AAExD,kBAAe,GAAG,CAAA"}
