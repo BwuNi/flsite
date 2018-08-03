@@ -11,6 +11,7 @@ module.exports = merge(base, {
         hot:true,
         historyApiFallback: true,
         noInfo: true,
-        overlay: true
+        overlay: true,
+        port: 8081
     },
 })

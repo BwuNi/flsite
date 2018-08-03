@@ -12,7 +12,7 @@
         "electron": "webpack && electron .",
         "packager": "webpack && electron-packager . --platform=win32 --electron-version=2.0.2  --overwrite",
         "public": "webpack-dev-server --config ./config/dev.conf.js --open --hot",
-        "dist": "webpack --progress --hide-modules --config ./config/prod.conf.js "
+        "dist": "webpack --progress -p --hide-modules --config ./config/prod.conf.js "
     },
     "dependencies": {
         "axios": "^0.18.0",

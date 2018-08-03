@@ -176,4 +176,3 @@ new Vue({
   components: { App }
 })
 
-
