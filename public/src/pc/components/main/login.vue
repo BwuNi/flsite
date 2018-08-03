@@ -16,8 +16,8 @@ import Colorful from '../../utils/view/ColorfulBand.js'
 import Ajax from '../../utils/ajax'
 import cookie from 'js-cookie'
 
-import pageTabs from '@/store/modules/pageTabs'
-import system from '@/store/modules/user/system'
+import pageTabs from '@/pc/store/modules/pageTabs'
+import system from '@/pc/store/modules/user/system'
 
 let vcode_id = ''
 

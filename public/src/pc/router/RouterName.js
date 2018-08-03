@@ -1,5 +1,5 @@
 import root from '../components/modules/index'
-import routerLabel from '@/router/RouterLabel'
+import routerLabel from '@/pc/router/RouterLabel'
 
 
 const RouterNamer = (mod, arr, name = '') => {

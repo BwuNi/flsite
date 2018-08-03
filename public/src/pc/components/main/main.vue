@@ -24,9 +24,9 @@ import Aside from './aside.vue'
 import Login from './login.vue'
 import PageContainer from './page.container.vue'
 
-import pageTabs from '@/store/modules/pageTabs'
-import loading from '@/store/modules/loading'
-import system from '@/store/modules/user/system' //SystemType
+import pageTabs from '@/pc/store/modules/pageTabs'
+import loading from '@/pc/store/modules/loading'
+import system from '@/pc/store/modules/user/system' //SystemType
 
 
 export default {

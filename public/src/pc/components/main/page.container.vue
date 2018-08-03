@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import Pages from '@/router/RouterLabel'
-import pageTabs from '@/store/modules/pageTabs'
+import Pages from '@/pc/router/RouterLabel'
+import pageTabs from '@/pc/store/modules/pageTabs'
 
 export default {
 	name: "bwu-pageContainer",

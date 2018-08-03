@@ -1,4 +1,4 @@
-import Ajax from '@/utils/ajax'
+import Ajax from '@/pc/utils/ajax'
 
 export default {
     ['CHANGE_MOD']({ commit, state, getters }, { sort, nid }) {

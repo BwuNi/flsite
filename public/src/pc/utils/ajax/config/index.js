@@ -1,4 +1,4 @@
-import config_pro from '../../../../../common/config/index'
+import config_pro from '../../../../../../common/config/index'
 import config_dev from './config'
 
 let serverApiUrl = ''
@@ -6,7 +6,7 @@ let serverApiUrl = ''
 if (process.env.NODE_ENV == 'production') {
     serverApiUrl = config_pro.serverApiUrl
 } else {
-    serverApiUrl = config_dec.serverApiUrl
+    serverApiUrl = config_dev.serverApiUrl
 }
 
 const system = {
