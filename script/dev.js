@@ -11,6 +11,7 @@ const
         'cmd.exe', ['/s', '/c', `"cd ${projPath} && npm run build:watch"`], { cwd: null, env: null, windowsVerbatimArguments: true }
     )
 
+    
 babelWatch.stdout.on('data', function(data) {
     console.log(chalk.yellow(`service: ${data.toString()}`))
 });
