@@ -5,14 +5,12 @@
     "author": "bwuning <bwuning@outlook.com>",
     "private": true,
     "scripts": {
-        "dev": "node ./build/dev.js",
-        "build": "cross-env NODE_ENV=production ",
         "temp": "node ./build/build.js",
         "test": "karma start ./test/karma.conf.js",
         "electron": "webpack && electron .",
         "packager": "webpack && electron-packager . --platform=win32 --electron-version=2.0.2  --overwrite",
-        "public": "webpack-dev-server --config ./config/dev.conf.js --open --hot",
-        "dist": "webpack --progress -p --hide-modules --config ./config/prod.conf.js "
+        "dev": "webpack-dev-server --config ./config/dev.conf.js --open --hot",
+        "build": "webpack --progress -p --hide-modules --config ./config/prod.conf.js "
     },
     "dependencies": {
         "axios": "^0.18.0",
@@ -61,8 +59,10 @@
         "less": "^2.7.3",
         "less-loader": "^4.0.5",
         "mocha": "^5.1.0",
+        "node-sass": "^4.9.2",
         "postcss-loader": "^2.0.9",
         "power-assert": "^1.5.0",
+        "sass-loader": "^7.1.0",
         "style-loader": "^0.19.0",
         "url-loader": "^0.6.2",
         "vue-hot-reload-api": "^2.2.4",

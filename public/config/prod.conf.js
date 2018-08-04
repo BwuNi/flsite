@@ -8,7 +8,7 @@ module.exports = merge(base, {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: './dist/',
-        filename: 'build.js',
+        filename: '[name].js',
         //异步加载的模块是要以文件形式加载，生成的文件名是以chunkFilename配置的
         chunkFilename: 'chunk[id].js?[chunkhash]',
     },

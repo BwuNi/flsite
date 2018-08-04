@@ -3,7 +3,6 @@ export default {
         modules,
         active
     }) {
-        console.log(modules)
         state.active = active ? active : modules[0].nid
         state.modules = modules
 

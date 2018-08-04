@@ -6,11 +6,15 @@ const
 
     
 module.exports = {
-    entry:path.resolve(__dirname, '../src/main.js'),
+    entry:{
+        'main':path.resolve(__dirname, '../src/main.js'),
+        'install':path.resolve(__dirname, '../worker/install.js'),
+        'sw':path.resolve(__dirname, '../worker/sw.js')
+    },
     output:{
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: 'build.js',
+        filename: '[name].js',
         //异步加载的模块是要以文件形式加载，生成的文件名是以chunkFilename配置的
         chunkFilename: 'chunk[id].js?[chunkhash]',
     },

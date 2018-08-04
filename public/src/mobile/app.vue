@@ -1,5 +1,5 @@
 <template>
-	<bwu-main></bwu-main>
+	<bwu-main class="main"></bwu-main>
 </template>
 
 <script>
@@ -15,4 +15,12 @@
 </script>
 
 <style>
+body,html,.main{
+	padding: 0;
+	position: relative;
+	height: 100%;
+	width: 100%;
+    margin: 0;
+}
+
 </style>

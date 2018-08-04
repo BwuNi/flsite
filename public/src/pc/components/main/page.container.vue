@@ -80,7 +80,6 @@ export default {
 					}
 				});
 
-				console.log(pageTabs.mut)
 				this.$store.commit(pageTabs.mut.REMOVE_PAGE, closeIndex)
 				this.$store.commit(pageTabs.mut.SET_PAGE, activeName)
 			}

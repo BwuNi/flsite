@@ -7,14 +7,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-console.log({
-    strict: process.env.NODE_ENV !== 'production',
-    modules: {
-        Loading,
-        PageTabs,
-        User
-    }
-})
 
 export default new Vuex.Store({
     strict: process.env.NODE_ENV !== 'production',

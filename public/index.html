@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>client</title>
-  </head>
-  <body>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+</head>
+
+<body>
     <div id="app"></div>
-    <script src="./dist/build.js"></script>
-  </body>
+    <!-- <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').then(res => {
+                console.log('success')
+                console.log(res)
+
+            }).catch(e => {
+                console.log('error')
+                console.log(e)
+            })
+        } else {
+            console.log('no')
+        }
+    </script> -->
+    <!-- <script src="./dist/install.js"></script> -->
+    <script src="./dist/main.js"></script>
+</body>
+
 </html>

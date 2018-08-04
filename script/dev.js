@@ -14,11 +14,11 @@ const
 
 
 babelWatch.stdout.on('data', function(data) {
-    console.log(chalk.blue(`typescript: ${data.toString()}`))
+    console.log(chalk.yellow(`typescript: ${data.toString()}`))
 });
 
 babelWatch.stderr.on('data', (data) => {
-    console.log(chalk.blue(`typescript: ${data.toString()}`));
+    console.log(chalk.red(`typescript: ${data.toString()}`));
 });
 
 const
@@ -31,18 +31,18 @@ nodeWatch.stdout.on('data', function(data) {
 });
 
 nodeWatch.stderr.on('data', (data) => {
-    console.log(chalk.blue(`node: ${data.toString()}`));
+    console.log(chalk.red(`node: ${data.toString()}`));
 });
 
 const
     webpackWatch = spawn(
-        'cmd.exe', ['/s', '/c', `"cd ${clientPath} && npm run public`], { cwd: null, env: null, windowsVerbatimArguments: true }
+        'cmd.exe', ['/s', '/c', `"cd ${clientPath} && npm run dev`], { cwd: null, env: null, windowsVerbatimArguments: true }
     )
 
 webpackWatch.stdout.on('data', function(data) {
-    console.log(chalk.blue(`webpack: ${data.toString()}`))
+    console.log(chalk.green(`webpack: ${data.toString()}`))
 });
 
 webpackWatch.stderr.on('data', (data) => {
-    console.log(chalk.blue(`webpack: ${data.toString()}`));
+    console.log(chalk.red(`webpack: ${data.toString()}`));
 });

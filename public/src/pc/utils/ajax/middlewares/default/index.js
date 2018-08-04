@@ -24,6 +24,5 @@ export default async function(option, then, err) {
 
     const result = await then(_option)
 
-    console.log(result)
     return result
 }

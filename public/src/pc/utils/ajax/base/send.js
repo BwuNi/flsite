@@ -33,15 +33,6 @@ async function sendAjax(option) {
     if (type === 'get' || type === 'GET'||data)
         params = JSON.parse(data)
 
-    console.log({
-        method: type,
-        url,
-        data,
-        params,
-        headers: {
-            'Content-Type': contentType
-        }
-    })
 
     const result = await axios({
         method: type,
@@ -53,6 +44,5 @@ async function sendAjax(option) {
         }
     })
 
-    console.log(result)
     return result.data
 }

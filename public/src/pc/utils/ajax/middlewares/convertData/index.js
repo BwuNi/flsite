@@ -36,6 +36,5 @@ export default async function(option, then, err) {
     _option.data = _option.data === null ? null : enJson(_option.data, param)
 
     const result = await then(_option)
-    console.log(deJson(result))
     return deJson(result)
 }
