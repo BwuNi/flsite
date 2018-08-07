@@ -12,14 +12,13 @@
 </template>
 
 <script>
-import Colorful from '../../utils/view/ColorfulBand.js'
-import Ajax from '../../utils/ajax'
-import cookie from 'js-cookie'
+import Colorful from '@/common/view/ColorfulBand.js'
+import md from '@/common/request/md'
 
 import pageTabs from '@/pc/store/modules/pageTabs'
 import system from '@/pc/store/modules/user/system'
 
-let vcode_id = ''
+import cookie from 'js-cookie'
 
 export default {
 	name: 'bwu-login',
@@ -28,6 +27,7 @@ export default {
 			msg: 'Welcome to Your Vue.js App',
 			img_src: '',
 			vcode: '',
+			vcode_id: '',
 			ucode: 'Wckj123',
 			uname: '超级管理员'
 		}
@@ -55,37 +55,10 @@ function init_background(el) {
 	el.appendChild(c)
 }
 
-function init_check() {
-	const _this = this
-	vcode_id = (() => {
-		const vidrandom = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-			'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f',
-			'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Q', 'W',
-			'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H',
-			'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M']
-
-		return (new Array(5)
-			.fill('')
-			.map(() =>
-				(vidrandom[Math.floor(Math.random() * vidrandom.length)]
-				))
-			.join('')
-		)
-	})()
-
-
-	//_this.img_src = `http://127.0.0.1:1102/WCKJAPI_MD/GetValidateCode/` + encodeURIComponent(`{"data":"${vcode_id}"}`)
-
-	Ajax()
-		.data(null)
-		.get(`GetValidateCode/%7B%22data%22:%22${vcode_id}%22%7D`)
-		.then(({ data }) => {
-			_this.img_src = data
-		})
-		.catch(() => {
-			// _this.img_src = `http://127.0.0.1:8081/WCKJAPI_MD/GetValidateCode/{"data":"${vcode_id}"}`
-			_this.img_src = `http://127.0.0.1:1102/WCKJAPI_MD/GetValidateCode/` + encodeURIComponent(`{"data":"${vcode_id}"}`)
-		})
+async function init_check() {
+	const { src, vcode_id } = await md.getValidateCode()
+	this.img_src = src
+	this.vcode_id = vcode_id
 }
 
 function before_check(_this) {
@@ -95,46 +68,35 @@ function before_check(_this) {
 		return false
 }
 
-function check_value() {
+async function check_value() {
 	const _this = this
 
 	if (!before_check(_this))
 		return
 
-	Ajax()
-		.data({
-			LOGIN: _this.uname,
-			PASSWORD: _this.ucode,
-			VCODE: _this.vcode,
-			VCODEID: vcode_id
-		})
-		.encrypt(true)
-		.post('Login').then(({ data }) => {
-			succ(_this, data)
-		})
+	let token = await md.login({
+		LOGIN: _this.uname,
+		PASSWORD: _this.ucode,
+		VCODE: _this.vcode,
+		VCODEID: _this.vcode_id
+	})
+
+	succ(_this, token)
 }
 
-function succ(_this, id) {
+async function succ(_this, id) {
 	cookie.set('LOGIN_KEY', id)
 
-	Ajax()
-		.get('GetMyMenuTops')
-		.then(({ data }) => {
-			_this.$store.commit(
-				system.mut.INIT_MOD,
-				{
-					modules: data.map(i => ({
-						name: i.MNAME,
-						nid: i.MID,
-						icon: i.ICON.split('-').join('s-'),
-						pages: [],
-						sort: i.SORT
-					}))
-				}
-			)
+	let list = await md.getMyMenuTops()
 
-			_this.$emit('login')
-		})
+
+	_this.$store.commit(
+		system.mut.INIT_MOD,
+		{ modules: list }
+	)
+
+	_this.$emit('login')
+
 
 }
 

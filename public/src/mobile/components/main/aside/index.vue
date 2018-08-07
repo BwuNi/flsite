@@ -16,7 +16,9 @@
             {width:(105-distance)+'vw',opacity:distance/80 ,transition:transition,display:this.close?'none':'block'},
             p?{left:'75vw'}:{right:'75vw'}
             )"></div>
-        <div class="content" @touchstart='closeStart'></div>
+        <div class="content" @touchstart='closeStart'>
+            <bwu-picker></bwu-picker>
+        </div>
     </div>
 
 </template>
@@ -127,6 +129,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: #f6f6f6;
+    padding: 1vw;
   }
 }
 </style>

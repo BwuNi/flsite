@@ -23,4 +23,7 @@ body,html,.main{
     margin: 0;
 }
 
+*{
+	box-sizing: border-box;
+}
 </style>

@@ -80,7 +80,7 @@ export default {
 function $login() {
 	const _this = this
 	_this.$data.showLogin = false
-	this.$store.dispatch(system.act.CHANGE_MOD, this.$store.getters[system.get.STATE].modules[0])
+	setImmediate(()=>_this.$store.dispatch(system.act.CHANGE_MOD, _this.$store.getters[system.get.STATE].modules[0]))
 }
 
 function $toTop() {
