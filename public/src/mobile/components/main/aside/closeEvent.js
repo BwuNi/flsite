@@ -1,10 +1,14 @@
-let
-    moveListener = null,
+let moveListener = null,
     endListener = null,
     beginPositon = null
 
 const
-    closeStart = (_this) => e => {
+    distance = (px, p) => (
+        p
+            ? px / (document.body.clientWidth / 100) 
+            : 100 - (px / (document.body.clientWidth / 100)) 
+    ),
+    closeStart = _this => e => {
         if (_this.close || !_this.open) return
 
         moveListener = closeMove(_this)
@@ -13,25 +17,19 @@ const
         document.body.addEventListener('touchmove', moveListener)
         document.body.addEventListener('touchend', endListener)
 
-        beginPositon = e.touches[0].screenX / (document.body.clientWidth / 100)
-
+        beginPositon =  distance(e.touches[0].screenX, _this.p)
 
         // 为了开始时 transition 仍有效
         setTimeout(() => {
             _this.open = false
-        }, 0);
-
+        }, 0)
     },
-    closeMove = (_this) => (e) => {
+    closeMove = _this => e => {
+        let position = 80 + (distance(e.touches[0].screenX, _this.p) - beginPositon)
 
-        let position = 80 + ((e.touches[0].screenX / (document.body.clientWidth / 100)) - beginPositon)
-
-        console.log(position)
         _this.moveTo(position)
-
     },
-
-    closeEnd = (_this) => (e) => {
+    closeEnd = _this => () => {
         if (moveListener) {
             document.body.removeEventListener('touchmove', moveListener)
             moveListener = null
@@ -42,9 +40,8 @@ const
             endListener = null
         }
 
-        if (_this.right < 55)(_this.open = false, _this.close = true)
-        else(_this.open = true, _this.close = false)
-
+        if (_this.right < 55)(_this.open = false), (_this.close = true)
+        else(_this.open = true), (_this.close = false)
     }
 
 export default closeStart

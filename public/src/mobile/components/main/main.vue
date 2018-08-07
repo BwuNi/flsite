@@ -1,12 +1,15 @@
 <template>
     <div>
         <m-header></m-header>
-        <m-fab></m-fab>
+        <m-fab 
+            :left = 'fabLeft + "vw"'
+            :transition = 'fabTransition' >
+        </m-fab>
+
         <m-aside 
-            :animation.sync='asideMoveObj.animation' 
-            :right.sync='asideMoveObj.aside_right'
-            :open.sync='asideMoveObj.open'
-            :close.sync='asideMoveObj.close'>
+            :position = '"right"'
+            @distance = 'asideDistance'
+            @open_close = 'asideOpenClose'>
         </m-aside>
     </div>
 </template>
@@ -25,18 +28,20 @@ export default {
     },
     data() {
         return {
-            asideMoveObj: {
-                isBegin: false,
-                startPosition: 0,
-                aside_right: 0,
-                animation: true,
-                open:false,
-                close:true
-            }
+            fabLeft: 80,
+            fabTransition: 'all 0.2s ease-out'
         }
     },
     methods: {
+        asideDistance(e) {
+            this.fabLeft = 80 - (e < 5 ? 0 : e - 5)
+        },
+        asideOpenClose({ open, close }) {
 
+            this.fabTransition = (open || close
+                ? 'all 0.2s ease-out'
+                : '')
+        }
     }
 }
 </script>
