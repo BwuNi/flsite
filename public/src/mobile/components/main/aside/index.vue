@@ -70,7 +70,8 @@ export default {
                 ? 'all 0.2s ease-out'
                 : '')
         }
-    },
+    }
+    ,
     methods: {
         openStart(event) {
             openStart(this)(event)

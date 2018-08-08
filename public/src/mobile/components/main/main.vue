@@ -11,6 +11,9 @@
             @distance = 'asideDistance'
             @open_close = 'asideOpenClose'>
         </m-aside>
+
+        <!-- <bwu-mask :isShown='mask' @tap="maskclick"></bwu-mask>
+        <bwu-popup></bwu-popup> -->
     </div>
 </template>
 
@@ -29,7 +32,8 @@ export default {
     data() {
         return {
             fabLeft: 80,
-            fabTransition: 'all 0.2s ease-out'
+            fabTransition: 'all 0.2s ease-out',
+            mask:true
         }
     },
     methods: {
@@ -41,6 +45,10 @@ export default {
             this.fabTransition = (open || close
                 ? 'all 0.2s ease-out'
                 : '')
+        },
+        maskclick(){
+            console.log(1)
+            this.mask = !this.mask
         }
     }
 }
