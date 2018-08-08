@@ -19,4 +19,4 @@ exports.default = (client) => (name, url) => new Promise((resolve, rej) => {
             : resolve(res);
     });
 });
-//# sourceMappingURL=addMagazine.js.map
+//# sourceMappingURL=addMagazine.js.map 
