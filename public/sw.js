@@ -1,8 +1,17 @@
 const cacheName = 'test'
 
-self.addEventListener('install', event => {
+self.addEventListener('install', async event => {
+
+
     event.waitUntil(
-        caches.open(cacheName).then(cache => {
+        caches.open(cacheName).then(async cache => {
+            const keys = await cache.keys();
+
+            await Promise.all(keys.map(v=>{
+                console.log(v)
+                return cache.delete(v)
+            }))
+
             let res = cache.addAll([
                 './dist/main.js',
                 './index.html',
