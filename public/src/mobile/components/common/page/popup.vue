@@ -62,7 +62,7 @@ export default {
     methods: {
         getResult() {
             const target = this.$refs.chooselist
-            const index = target.scrollTop / document.body.clientWidth * 100 / 10
+            const index = target.scrollTop/document.body.clientWidth*100/10
             return this.list[Math.round(index)]
         },
 
@@ -70,7 +70,7 @@ export default {
             this.$emit('cancel')
         },
         confirm() {
-            this.$emit('confirm', this.getResult())
+            this.$emit('confirm',this.getResult())
         },
         touchstart() {
             isTouching = true
@@ -141,8 +141,7 @@ function scrollTo(target, position, range = 5, callback) {
   right: 0;
   height: 64vw;
   background-color: #fff;
-  //   box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
-  box-shadow: 0 -27vw 0 0 rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: bottom 0.3s ease-out;
 
@@ -172,8 +171,10 @@ function scrollTo(target, position, range = 5, callback) {
     top: 0;
     bottom: 0;
     overflow: auto;
+    background:linear-gradient(to bottom, #cccccc, #cccccc 41.5%, white 42%, white 58%, #cccccc 58.5%, #cccccc); 
 
-    box-shadow: 0 27vw 0 0 rgba(0, 0, 0, 0.1) inset;
+    // box-shadow: 0 27vw 0 0 rgba(0, 0, 0, 0.1) inset,
+    //   0 -27vw 0 0 rgba(0, 0, 0, 0.1) inset;
 
     .content {
       padding: 27vw 0;

@@ -2,8 +2,8 @@ const cacheName = 'test'
 
 self.addEventListener('install', async event => {
 
+ 
 
-    
     event.waitUntil(
         caches.open(cacheName).then(async cache => {
             const keys = await cache.keys();
