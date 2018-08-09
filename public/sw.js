@@ -2,16 +2,18 @@ const cacheName = 'test'
 
 self.addEventListener('install', async event => {
 
- 
+
 
     event.waitUntil(
         caches.open(cacheName).then(async cache => {
             const keys = await cache.keys();
-      
-            await Promise.all(keys.map(v=>{
-                console.log(v)
-                return cache.delete(v)
-            }))
+
+            await Promise.all(keys
+                .filter(v => v.url ? v.url.indexOf('manifest.json') === -1 : true)
+                .map(v => {
+                    console.log(v)
+                    return cache.delete(v)
+                }))
 
             let res = cache.addAll([
                 './dist/main.js',
