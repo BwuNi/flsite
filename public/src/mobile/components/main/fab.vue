@@ -16,7 +16,7 @@ export default {
 .m-fab{
     width: 15.55vw;
     height: 15.55vw;                         
-    box-shadow: 0 0.7vw 2.4vw 0 rgba(0,0,0,0.4);
+    box-shadow: 0 0.7vw 1.4vw 0 rgba(0,0,0,0.2);
     position: fixed;
     bottom: 5vw;
     background-color: #90aeff;
