@@ -5,7 +5,7 @@
     "display": "standalone",
     "start_url": "/",
     "short_name": "BwuNin.Site",
-    "theme_color": "#202124",
+    "theme_color": "#4CAAFF",
     "description": "BwuNin.Site",
     "orientation":"portrait-primary",
     "background_color": "#fff",

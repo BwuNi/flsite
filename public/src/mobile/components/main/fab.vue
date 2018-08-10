@@ -19,7 +19,7 @@ export default {
     box-shadow: 0 0.7vw 1.4vw 0 rgba(0,0,0,0.2);
     position: fixed;
     bottom: 5vw;
-    background-color: #90aeff;
+    background-color: #4CAAFF;
     border-radius: 50%;
 }
 </style>
