@@ -16,12 +16,12 @@
 
             <div class="content">
                 <div v-for='(v,i) in list' class="content--item">
-                    {{v.content}}
+                    {{v[contentField]}}
                 </div>
             </div>
 
         </div>
-        <button class="confirm_btn" @touchend = 'confirm'>confirm</button>
+        <button class="confirm_btn" @touchend = 'confirm'>确认</button>
     </div>
 </template>
 
@@ -31,7 +31,6 @@ let isScrolling = false
 
 const debounce = (timeout, func) => {
     let handle = null
-    console.log(1)
     return (...arg) => {
         if (handle) clearTimeout(handle)
         handle = setTimeout(func.bind(null, ...arg), timeout);
@@ -39,19 +38,9 @@ const debounce = (timeout, func) => {
 }
 export default {
     name: 'bwu-popup',
-    props: ['z', 'data', 'validate', 'isShown'],
-
+    props: ['z', 'list', 'validate', 'isShown','idField','contentField'],
     data() {
         return {
-            list: [
-                { content: 1, id: 12 },
-                { content: 2, id: 23 },
-                { content: 3, id: 34 },
-                { content: 4, id: 45 },
-                { content: 5, id: 56 },
-                { content: 6, id: 67 },
-                { content: 7, id: 78 },
-            ]
         }
     },
     computed: {
@@ -78,7 +67,7 @@ export default {
         touchend() {
             isTouching = false
         },
-        scroll: debounce(100, (e) => {
+        scroll: debounce(200, (e) => {
             if (isTouching || isScrolling) return
             const
                 toppx = e.target.scrollTop,
@@ -86,7 +75,7 @@ export default {
                 topvw = toppx / bw * 100,
                 distancevw = topvw % 10
 
-            if ((distancevw <= 0.4) || (distancevw >= 9.6)) return
+            //if ((distancevw <= 0.4) || (distancevw >= 9.6)) return
 
             isScrolling = true
 
@@ -95,7 +84,7 @@ export default {
                 distancevw < 5
                     ? (topvw - distancevw) * bw / 100
                     : (topvw - distancevw + 10) * bw / 100,
-                0.4 * bw / 100,
+                0.6 * bw / 100,
                 () => { isScrolling = false }
             )
 
@@ -139,20 +128,21 @@ function scrollTo(target, position, range = 5, callback) {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 64vw;
+  height: 66vw;
   background-color: #fff;
   box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: bottom 0.3s ease-out;
+  background:linear-gradient(to bottom, #cccccc, #cccccc 42.7%, white 43%, white 57.3%, #cccccc 57.6%, #cccccc); 
 
   .confirm_btn {
     position: absolute;
-    top: 28.2vw;
+    top: 29.2vw;
     right: 1vw;
     height: 8vw;
     line-height: 8vw;
     width: 16vw;
-    background-color: aqua;
+    background-color: #ff6473;
     text-align: center;
     outline: none !important;
     padding: 0;
@@ -168,10 +158,9 @@ function scrollTo(target, position, range = 5, callback) {
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
-    bottom: 0;
+    top: 1vw;
+    bottom: 1vw;
     overflow: auto;
-    background:linear-gradient(to bottom, #cccccc, #cccccc 41.5%, white 42%, white 58%, #cccccc 58.5%, #cccccc); 
 
     // box-shadow: 0 27vw 0 0 rgba(0, 0, 0, 0.1) inset,
     //   0 -27vw 0 0 rgba(0, 0, 0, 0.1) inset;
@@ -184,6 +173,8 @@ function scrollTo(target, position, range = 5, callback) {
         height: 10vw;
         line-height: 10vw;
         text-align: center;
+        font-size: 4.4vw;
+        color: #666666
       }
     }
   }

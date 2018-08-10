@@ -1,19 +1,10 @@
 <template>
-	<div class='bwu-picker block' @touchend="touchend">
-		{{result?result.content:''}}
-		<bwu-mask :isShown='popup' :position="'fixed'" :z='999' @tap ="popdown" >
-			<bwu-popup :isShown='popup' @confirm = 'choose'></bwu-popup>
-		</bwu-mask>
+	<div class='bwu-picker border' :style="_style" @touchmove="touchmove" @touchstart="touchstart" @touchend="touchend">
+		{{result?result[_contentField]:''}}
 
-		<!-- <div class='modal'>
-			<div class='popup'>
-				<div class="content">
-					<div v-for='(v,i) in list' class="content--item">
-						{{v.content}}
-					</div>
-				</div>
-			</div>
-		</div> -->
+		<bwu-mask :isShown='popup' :position="'fixed'" :z='999' @tap ="popdown" >
+			<bwu-popup :isShown='popup' :list='_list' :contentField="_contentField" :idField="_idField" @confirm = 'choose'></bwu-popup>
+		</bwu-mask>
 	</div>
 
 </template>
@@ -22,33 +13,54 @@
 import Mask from '../page/mask'
 import PopUp from '../page/popup'
 
+let touchStatus = false
+
+
 export default {
 	name: 'bwu-picker',
-	props: [],
+	props: ['Style', "list",'decoration', 'idField', 'contentField'],
 	data() {
 		return {
-			list: [
-				{ content: 1, id: 12 },
-				{ content: 2, id: 23 },
-				{ content: 3, id: 34 },
-				{ content: 4, id: 45 },
-				{ content: 5, id: 56 },
-				{ content: 6, id: 67 },
-				{ content: 7, id: 78 },
-			],
-			result:null,
+			result: null,
 			popup: false,
+		}
+	},
+	computed: {
+		_style() {
+			return this.Style ? this.Style : {}
+		},
+		_decoration() {
+			return this.decoration ? this.decoration : 'border'
+		},
+		_idField() {
+			return this.idField ? this.idField : 'id'
+		},
+		_contentField() {
+			return this.contentField ? this.contentField : 'value'
+		},
+		_list() {
+			return this.list ? this.list : []
 		}
 	},
 
 	methods: {
+
 		touchend(e) {
-			this.popup = true
+			if (touchStatus) this.popup = true
+			touchStatus = false
 		},
+		touchstart(e) {
+			touchStatus = true
+		},
+
+		touchmove(e) {
+			touchStatus = false
+		},
+
 		popdown() {
 			this.popup = false
 		},
-		choose(v){
+		choose(v) {
 			this.result = v
 			this.popdown()
 		}
@@ -61,13 +73,23 @@ export default {
 </script>
 <style lang="scss" scoped>
 .bwu-picker {
-
-
-  &.block {
+  &.card {
     width: 100%;
-	text-align: center;
-    height: 10vw;line-height: 10vw;
+    text-align: center;
+    height: 10vw;
+    line-height: 10vw;
     box-shadow: 0 0.5vw 0.7vw 0 rgba(0, 0, 0, 0.3);
+  }
+
+  &.border {
+    width: 100%;
+    text-align: center;
+    height: 12vw;
+    line-height: 12vw;
+    font-size: 5vw;
+    color: #2e6699;
+    border: solid 1px #2e6699;
+    border-radius: 1vw;
   }
 
   .modal {

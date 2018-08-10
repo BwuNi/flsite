@@ -13,7 +13,7 @@ export default {
 <style scoped>
 
 .m-header{
-    background-color: #4CAAFF;
+    background-color: #2e6699;
     width: 100%;
     height: 15.55vw;                         
     box-shadow: 0 0.5vw 1vw 0 rgba(0,0,0,0.3);

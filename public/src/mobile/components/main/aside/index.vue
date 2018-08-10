@@ -17,7 +17,18 @@
             p?{left:'75vw'}:{right:'75vw'}
             )"></div>
         <div class="content" @touchstart='closeStart'>
-            <bwu-picker></bwu-picker>
+            <bwu-picker 
+                :Style="{
+                    width: '100%',
+                    textAlign: 'center',
+                    height: '12vw',
+                    lineHeight:' 12vw',
+                    fontSize: '5vw',
+                    color: '#2e6699',
+                    border:' solid 1px #2e6699',
+                    borderRadius: '1vw',
+                }"
+                :list="systemList"></bwu-picker>
         </div>
     </div>
 
@@ -37,6 +48,15 @@ export default {
             open: false,
             close: true,
             right: 0,
+            systemList: [
+                { value: '门户首页', id: 12 },
+                { value: '资产管理', id: 23 },
+                { value: '路产营运', id: 34 },
+                { value: '人事办公', id: 45 },
+                { value: '财务代办', id: 56 },
+                { value: '应急信息', id: 67 },
+                { value: '主数据平台', id: 78 },
+            ]
         }
     },
     computed: {
@@ -51,8 +71,8 @@ export default {
                 : (this.right > 75)
                     ? 80
                     : this.right)
-            
-            this.$emit('distance',res)
+
+            this.$emit('distance', res)
             return res
         },
         transition() {
@@ -64,7 +84,7 @@ export default {
                 this.right = 0
             }, 0);
 
-            this.$emit('open_close',{open:this.open,close:this.close})
+            this.$emit('open_close', { open: this.open, close: this.close })
 
             return (this.open || this.close
                 ? 'all 0.2s ease-out'
