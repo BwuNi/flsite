@@ -11,7 +11,6 @@ process.argv.forEach(function(val, index, array) {
 });
 
 
-
 const
     projPath = path.resolve(__dirname, '../core'),
     tscWatch = spawn(
