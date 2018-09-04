@@ -21,11 +21,11 @@ const
 console.log(`"cd ${projPath} && tsc ${isWatch}"`)
 
 tscWatch.stdout.on('data', function(data) {
-    console.log('tsc: ' + chalk.green(`tsc: ${data.toString()}`))
+    console.log(chalk.green(`tsc: ${data.toString()}`))
 });
 
 tscWatch.stderr.on('data', (data) => {
-    console.log('tsc: ' + chalk.red(`tsc: ${data.toString()}`));
+    console.log(chalk.red(`tsc: ${data.toString()}`));
 });
 
 
@@ -39,9 +39,9 @@ const
 console.log(`"cd ${pubPath} && npm run build"`)
 
 pubWatch.stdout.on('data', function(data) {
-    console.log('public: ' + chalk.blue(`tsc: ${data.toString()}`))
+    console.log(chalk.blue(`tsc: ${data.toString()}`))
 });
 
 pubWatch.stderr.on('data', (data) => {
-    console.log('public: ' + chalk.red(`tsc: ${data.toString()}`));
+    console.log( chalk.red(`tsc: ${data.toString()}`));
 });

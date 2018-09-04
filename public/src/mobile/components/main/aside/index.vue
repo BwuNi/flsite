@@ -18,7 +18,7 @@
             )"></div>
         <div class="content" @touchstart='closeStart'>
             <bwu-picker 
-                :Style="{
+                :innerStyle="{
                     width: '100%',
                     textAlign: 'center',
                     height: '12vw',
@@ -28,7 +28,9 @@
                     border:' solid 1px #2e6699',
                     borderRadius: '1vw',
                 }"
-                :list="systemList"></bwu-picker>
+                :list="systemList">
+            </bwu-picker>
+            <bwu-tree></bwu-tree>
         </div>
     </div>
 

@@ -15,7 +15,7 @@
             @touchcancel.stop= 'touchend'>
 
             <div class="content">
-                <div v-for='(v,i) in list' class="content--item">
+                <div v-for='(v,i) in list' :key="i" class="content--item">
                     {{v[contentField]}}
                 </div>
             </div>

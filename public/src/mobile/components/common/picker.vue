@@ -10,15 +10,13 @@
 </template>
 
 <script>
-import Mask from '../page/mask'
-import PopUp from '../page/popup'
 
 let touchStatus = false
 
 
 export default {
 	name: 'bwu-picker',
-	props: ['Style', "list",'decoration', 'idField', 'contentField'],
+	props: ['innerStyle', "list",'decoration', 'idField', 'contentField'],
 	data() {
 		return {
 			result: null,
@@ -27,7 +25,7 @@ export default {
 	},
 	computed: {
 		_style() {
-			return this.Style ? this.Style : {}
+			return this.innerStyle ? this.innerStyle : {}
 		},
 		_decoration() {
 			return this.decoration ? this.decoration : 'border'
