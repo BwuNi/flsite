@@ -1,7 +1,13 @@
 <template>
     <div class="bwu-tree">
-        <bwu-tree-item v-for="(v,i) in localData" :data='v' :key="Math.random()"></bwu-tree-item>
-
+        <bwu-tree-item 
+            v-for="(v,i) in localData" 
+            :data='v' 
+            :index='i'
+            :key="Math.random()"
+            @item-height-resize = 'itemHeightResize'
+        >
+        </bwu-tree-item>
     </div>
 </template>
 
@@ -13,36 +19,35 @@ export default {
         "idField",
         "textField",
         "valueField",
-        "childrenField"
+        "childrenField",
     ],
 
     data() {
-        return {};
+        return {
+            itemHeights: [],
+        }
+    },
+    methods: {
+        itemHeightResize({ index, height }) {
+            if (this.itemHeights[index] !== height) this.itemHeights[index] = height
+
+            this.$emit('height-resize', this.itemHeights.reduce((res, v) => (v ? res + v : res), 0))
+
+        }
     },
     computed: {
         localData(data) {
             return (this.data
                 ? this.data
-                : [
-                    {
-                        text: Math.random(), id: Math.random(), chilren: [
-                            { text: Math.random(), id: Math.random(), chilren: [] },
-                            { text: Math.random(), id: Math.random(), chilren: [] },
-                            { text: Math.random(), id: Math.random(), chilren: [] },
-                            { text: Math.random(), id: Math.random(), chilren: [] }
-
-                        ]
-                    },
-                    { text: Math.random(), id: Math.random(), chilren: [] },
-                    { text: Math.random(), id: Math.random(), chilren: [] },
-                    { text: Math.random(), id: Math.random(), chilren: [] },
-                    { text: Math.random(), id: Math.random(), chilren: [] }
-                ])
+                : [])
+        },
+        mounted() {
+            if (localData.lenght > 0)
+                this.$emit('height-resize', this.itemHeights.reduce((res, v) => (v ? res + v : res), 0))
         }
     }
 };
 </script>
 
-<style lang="sass" scoped>
-
+<style lang="scss" scoped>
 </style>

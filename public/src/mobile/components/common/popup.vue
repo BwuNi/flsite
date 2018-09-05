@@ -49,17 +49,17 @@ export default {
         }
     },
     methods: {
-        getResult() {
+        getResultIndex() {
             const target = this.$refs.chooselist
             const index = target.scrollTop/document.body.clientWidth*100/10
-            return this.list[Math.round(index)]
+            return Math.round(index)
         },
 
         cancel() {
             this.$emit('cancel')
         },
         confirm() {
-            this.$emit('confirm',this.getResult())
+            this.$emit('confirm',this.getResultIndex())
         },
         touchstart() {
             isTouching = true

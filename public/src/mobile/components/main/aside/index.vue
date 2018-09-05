@@ -28,9 +28,10 @@
                     border:' solid 1px #2e6699',
                     borderRadius: '1vw',
                 }"
-                :list="systemList">
+                :list="systemList"
+                :result.sync="systemIndex">
             </bwu-picker>
-            <bwu-tree></bwu-tree>
+            <bwu-tree :data="treeData"></bwu-tree>
         </div>
     </div>
 
@@ -50,6 +51,7 @@ export default {
             open: false,
             close: true,
             right: 0,
+            systemIndex:0,
             systemList: [
                 { value: '门户首页', id: 12 },
                 { value: '资产管理', id: 23 },
@@ -58,7 +60,29 @@ export default {
                 { value: '财务代办', id: 56 },
                 { value: '应急信息', id: 67 },
                 { value: '主数据平台', id: 78 },
-            ]
+            ],
+            treeData:[
+                    {
+                        text: Math.random(), id: Math.random(), children: [
+                            { text: Math.random(), id: Math.random(), children: [] },
+                            { text: Math.random(), id: Math.random(), children: [] },
+                            {
+                                text: Math.random(), id: Math.random(), children: [
+                                    { text: Math.random(), id: Math.random(), children: [] },
+                                    { text: Math.random(), id: Math.random(), children: [] },
+                                    { text: Math.random(), id: Math.random(), children: [] },
+                                    { text: Math.random(), id: Math.random(), children: [] }
+                                ]
+                            },
+                            { text: Math.random(), id: Math.random(), children: [] }
+
+                        ]
+                    },
+                    { text: Math.random(), id: Math.random(), children: [] },
+                    { text: Math.random(), id: Math.random(), children: [] },
+                    { text: Math.random(), id: Math.random(), children: [] },
+                    { text: Math.random(), id: Math.random(), children: [] }
+                ]
         }
     },
     computed: {

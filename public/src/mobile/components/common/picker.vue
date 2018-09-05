@@ -1,9 +1,14 @@
 <template>
 	<div class='bwu-picker border' :style="_style" @touchmove="touchmove" @touchstart="touchstart" @touchend="touchend">
-		{{result?result[_contentField]:''}}
+		{{result!==null&&_list[result]?_list[result][_contentField]:''}}
 
 		<bwu-mask :isShown='popup' :position="'fixed'" :z='999' @tap ="popdown" >
-			<bwu-popup :isShown='popup' :list='_list' :contentField="_contentField" :idField="_idField" @confirm = 'choose'></bwu-popup>
+			<bwu-popup 
+			:isShown='popup' 
+			:list='_list' 
+			:contentField="_contentField" 
+			:idField="_idField"
+			@confirm = 'choose'></bwu-popup>
 		</bwu-mask>
 	</div>
 
@@ -16,10 +21,16 @@ let touchStatus = false
 
 export default {
 	name: 'bwu-picker',
-	props: ['innerStyle', "list",'decoration', 'idField', 'contentField'],
+	props: [
+		'innerStyle',
+		"list",
+		'decoration',
+		'idField',
+		'contentField',
+		'result'
+	],
 	data() {
 		return {
-			result: null,
 			popup: false,
 		}
 	},
@@ -38,6 +49,14 @@ export default {
 		},
 		_list() {
 			return this.list ? this.list : []
+		},
+		selectedIndex() {
+			return (
+				(this.result || this.result == 0)
+					? this.result
+					: null
+
+			)
 		}
 	},
 
@@ -59,7 +78,7 @@ export default {
 			this.popup = false
 		},
 		choose(v) {
-			this.result = v
+			this.$emit('update:result', v)
 			this.popdown()
 		}
 
