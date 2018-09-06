@@ -1,21 +1,39 @@
 <template>
     <div class="bwu-tree_item">
-        <div :class="{
-            'bwu-tree_item--text':true,
-            'animation':isAnimation,
-            'with_children':this.localChildren.length > 0,
-            'children_open':isOpen
-        }" @touchend="textClick">
+        <div 
+            :class="{
+                'bwu-tree_item--text':true,
+                'animation':isAnimation,
+                'with_children':this.localChildren.length > 0,
+                'children_open':isOpen
+            }" 
+            :style="{
+                paddingLeft:layerIndex * 4 + 6 +'vw',
+                height:itemHeight +'vw',
+                lineHeight:itemHeight+'vw'
+            }"
+            @touchend="textClick">
+            <span 
+            class="bwu-tree_item--icon"
+            :style="{
+                left:layerIndex * 4 + 3 +'vw',
+            }"
+            ></span>
             {{localData.text}}
+
         </div>
         <div
             v-if="localChildren.length" 
             :class="{'bwu-tree_item--children':true,'--children__open':isOpen}" 
-            :style="{height:realHeight+'vw'}">
+            :style="{
+                height:realHeight+'vw'
+            }">
 
             <bwu-tree 
-            @height-resize = 'treeResize'
-            :data="localChildren"></bwu-tree>
+                :layerIndex='layerIndex+1'
+                @height-resize = 'treeResize'
+                :data="localChildren">
+            </bwu-tree>
         </div>
     </div>
 </template>
@@ -30,14 +48,15 @@ export default {
         "textField",
         "valueField",
         "childrenField",
-        'index'
+        'index',
+        'layerIndex'
     ],
 
     data() {
         return {
             isOpen: true,
             isAnimation: false,
-            itemHeight: 10,
+            itemHeight: 12,
             treeHeight: 0
         };
     },
@@ -120,15 +139,15 @@ export default {
       animation: myfirst 0.4s ease-out 1;
       display: block;
       position: absolute;
-      background-color: rgba(37, 44, 65, 0.1);
+      background-color: rgba(37, 44, 65, 0.05);
       left: 0;
       right: 100%;
       top: 0;
       bottom: 0;
     }
-    &.with_children::after {
+    &.with_children > .bwu-tree_item--icon {
       content: "";
-      border-left: 1.2vw solid rgba(0,0,0,0.3);
+      border-left: 1.2vw solid rgba(0, 0, 0, 0.3);
       border-top: 1.2vw solid transparent;
       border-bottom: 1.2vw solid transparent;
       display: block;
@@ -138,16 +157,16 @@ export default {
       transform: translate(-50%, -50%) rotate(0);
       height: 0;
       width: 0;
-      transform: all 0.3 ease-out;
+      transition: all 0.3s ease-out;
     }
 
-    &.with_children.children_open::after {
+    &.with_children.children_open > .bwu-tree_item--icon {
       transform: translate(-50%, -50%) rotate(90deg);
     }
   }
 
   .bwu-tree_item--children {
-    padding-left: 4vw;
+    // padding-left: 4vw;
     overflow: hidden;
     transition: all 0.3s ease-out;
     background-color: rgba(88, 116, 152, 0.06);

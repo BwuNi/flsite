@@ -1,6 +1,7 @@
 <template>
     <div class="bwu-tree">
         <bwu-tree-item 
+            :layerIndex='localLayerIndex'
             v-for="(v,i) in localData" 
             :data='v' 
             :index='i'
@@ -20,6 +21,7 @@ export default {
         "textField",
         "valueField",
         "childrenField",
+        "layerIndex"
     ],
 
     data() {
@@ -44,6 +46,9 @@ export default {
         mounted() {
             if (localData.lenght > 0)
                 this.$emit('height-resize', this.itemHeights.reduce((res, v) => (v ? res + v : res), 0))
+        },
+        localLayerIndex() {
+            return this.layerIndex ? this.layerIndex : 0
         }
     }
 };
